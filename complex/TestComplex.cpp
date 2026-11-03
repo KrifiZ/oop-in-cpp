@@ -51,6 +51,18 @@ void testChainedMultiply() {
 	assert(a == Complex(10, 10) && b == Complex(3, -1));
 }
 
+void testChainedDivide() {
+	Complex a(10, 10), b(6, -2), c(2);
+	a /= b /= c;
+	std::cout << "a /= b /= c   : a = " << a << ", b = " << b << '\n';
+	assert(b == Complex(3, -1) && a == Complex(2, 4));
+
+	a = Complex(10, 10); b = Complex(6, -2);
+	(a /= b) /= c;
+	std::cout << "(a /= b) /= c : a = " << a << '\n';
+	assert(a == Complex(0.5, 1) && b == Complex(6, -2));
+}
+
 void testMixedWithDouble() {
 	Complex a(1, 2), b(3, -1), c(3.5);
 	std::cout << std::boolalpha
@@ -82,6 +94,7 @@ int main()
 	testAmplitudePhase();
 	testChainedAdd();
 	testChainedMultiply();
+	testChainedDivide();
 	testMixedWithDouble();
 	testDivisionByZero();
 	std::cout << "All tests passed\n";
