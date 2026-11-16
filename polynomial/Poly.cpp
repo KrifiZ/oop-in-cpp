@@ -37,36 +37,43 @@ double Poly::get(int power) const {
 }
 
 void Poly::set(int power, double value) {
-	if (value == 0.0)
+	if (value == 0.0) {
 		coefficients.erase(power);
-	else
+	}
+	else {
 		coefficients[power] = value;
+	}
 }
 
 double Poly::operator()(double x) const {
 	double result = 0.0;
-	for (const auto& [power, value] : coefficients)
+	for (const auto& [power, value] : coefficients) {
 		result += value * std::pow(x, power);
+	}
 	return result;
 }
 
 Poly& Poly::operator+=(const Poly& other) {
-	for (const auto& [power, value] : other.coefficients)
+	for (const auto& [power, value] : other.coefficients) {
 		set(power, get(power) + value);
+	}
 	return *this;
 }
 
 Poly& Poly::operator-=(const Poly& other) {
-	for (const auto& [power, value] : other.coefficients)
+	for (const auto& [power, value] : other.coefficients) {
 		set(power, get(power) - value);
+	}
 	return *this;
 }
 
 Poly& Poly::operator*=(const Poly& other) {
 	Poly product;
-	for (const auto& [power1, value1] : coefficients)
-		for (const auto& [power2, value2] : other.coefficients)
+	for (const auto& [power1, value1] : coefficients) {
+		for (const auto& [power2, value2] : other.coefficients) {
 			product.set(power1 + power2, product.get(power1 + power2) + value1 * value2);
+		}
+	}
 	coefficients = product.coefficients;
 	return *this;
 }
@@ -76,25 +83,31 @@ Poly operator-(Poly lhs, const Poly& rhs) { return lhs -= rhs; }
 Poly operator*(Poly lhs, const Poly& rhs) { return lhs *= rhs; }
 
 std::ostream& operator<<(std::ostream& out, const Poly& p) {
-	if (p.coefficients.empty())
+	if (p.coefficients.empty()) {
 		return out << 0;
+	}
 
 	for (auto it = p.coefficients.rbegin(); it != p.coefficients.rend(); ++it) {
 		int power = it->first;
 		double value = it->second;
 
-		if (it == p.coefficients.rbegin())
+		if (it == p.coefficients.rbegin()) {
 			out << (value < 0 ? "-" : "");
-		else
+		}
+		else {
 			out << (value < 0 ? " - " : " + ");
+		}
 
 		value = std::abs(value);
-		if (value != 1 || power == 0)
+		if (value != 1 || power == 0) {
 			out << value;
-		if (power >= 1)
+		}
+		if (power >= 1) {
 			out << "x";
-		if (power >= 2)
+		}
+		if (power >= 2) {
 			out << "^" << power;
+		}
 	}
 	return out;
 }
