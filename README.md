@@ -10,6 +10,6 @@ Projects for the Object-Oriented Programming in C++ course.
 | [stackincpp](stackincpp/) | The same stack as a C++ class |
 | [stackcopy](stackcopy/) | C++ stack with copy constructor and copy assignment operator |
 | [complex](complex/) | Complex number class with operator overloading |
-| [polynomial](polynomial/) | Sparse polynomial class with operator overloading and a proxy `operator[]` |
+| [polynomial](polynomial/) | Polynomial class storing only non-zero coefficients, with operator overloading |
 
 Each project has its own README with build instructions.
