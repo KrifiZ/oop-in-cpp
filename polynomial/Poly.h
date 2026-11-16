@@ -4,8 +4,6 @@
 
 class Poly {
 public:
-	// Returned by non-const operator[]. Reading through it does not create
-	// a coefficient and assigning 0 removes one, so only non-zero ones are stored.
 	class Coefficient {
 	public:
 		Coefficient(Poly& poly, int power) : poly(poly), power(power) {}
@@ -32,7 +30,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const Poly& p);
 
 private:
-	std::map<int, double> coefficients; // power -> non-zero coefficient
+	std::map<int, double> coefficients;
 
 	double get(int power) const;
 	void set(int power, double value);
