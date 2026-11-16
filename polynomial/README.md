@@ -10,11 +10,11 @@
 
 ## Function template version
 
-`display(T& p)` from the course's `TestPolyWithFunctionTemplate.cpp` (copied into `TestPoly.cpp`) is called as `display(p2)` (`T = Poly`) and `display<const Poly>(p2)` (`T = const Poly`).
+`display(T& p)` from the course's `TestPolyWithFunctionTemplate.cpp` is called as `display(p2)` (`T = Poly`) and `display<const Poly>(p2)` (`T = const Poly`).
 With `T = Poly` the coefficients are read through the **non-const** `operator[]`. If it returned `double&` (`return coefficients[power];`),
 reading `p2[5]` and `p2[3]` would insert zero coefficients into the map just by displaying the polynomial.
 That's why the non-const `operator[]` returns `Poly::Coefficient`: reading through it never stores anything, only assignment does.
-`testFunctionTemplate` and `testSparseStorage` check this.
+`TestPoly.cpp` is that file with asserts added after every printed result; one of them checks that `display(p2)` stored no zeros.
 
 ## Build & run (WSL / Linux)
 
