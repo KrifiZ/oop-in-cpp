@@ -41,5 +41,3 @@ private:
 Poly operator+(Poly lhs, const Poly& rhs);
 Poly operator-(Poly lhs, const Poly& rhs);
 Poly operator*(Poly lhs, const Poly& rhs);
-
-std::ostream& operator<<(std::ostream& out, const Poly& p);
