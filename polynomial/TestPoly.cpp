@@ -48,7 +48,9 @@ int main()
 	p2[4] = 1;
 
 	cout << "\n======= Polynomial p2 =======" << endl;
+	cout << "display<Poly>(p2): ";
 	display(p2);
+	cout << "display<const Poly>(p2): ";
 	display<const Poly>(p2);
 	// display(p2) read missing coefficients through non-const operator[]; no zeros may be stored
 	assert(str(p2) == "x^4 - 7x^2 + 3x + 2.6");
